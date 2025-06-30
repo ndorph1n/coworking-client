@@ -181,7 +181,7 @@ export default function WorkspaceModal({ workspaceId, onClose }) {
 
   return (
     <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center px-2">
-      <div className="bg-white rounded-md p-6 max-w-xl w-full max-h-[90vh] overflow-y-auto relative transform transition-all duration-300 scale-95 opacity-0 animate-fade-in">
+      <div className="bg-white rounded-md p-6 max-w-xl w-full max-h-[92vh] overflow-y-auto relative transform transition-all duration-300 scale-95 opacity-0 animate-fade-in">
         <button
           onClick={onClose}
           className="absolute top-1 right-2 text-gray-500 hover:text-black text-lg cursor-pointer"
@@ -203,7 +203,7 @@ export default function WorkspaceModal({ workspaceId, onClose }) {
             </p>
 
             {workspace.images?.length > 0 && (
-              <div className="flex gap-2 mb-4 overflow-x-auto">
+              <div className="flex gap-2 mb-4 overflow-x-auto h-[250px] rounded-md overflow-y-hidden">
                 {workspace.images.map((img, index) => (
                   <img
                     key={index}
