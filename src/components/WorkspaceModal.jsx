@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 import { getWorkspaceById } from "../api/workspaces";
 import { getBookingsByWorkspace, createBooking } from "../api/bookings";
 import { useUserStore } from "../store/userStore";
@@ -74,6 +74,8 @@ export default function WorkspaceModal({ workspaceId, onClose }) {
     meeting_room: "Переговорная",
     office: "Офис",
   };
+
+  const dateInputRef = useRef(null);
 
   const duration = useMemo(() => {
     const toMinutes = (timeStr) => {
@@ -229,9 +231,15 @@ export default function WorkspaceModal({ workspaceId, onClose }) {
                     type="date"
                     value={form.date}
                     min={getToday()}
+                    ref={dateInputRef}
                     onChange={(e) =>
                       setForm((prev) => ({ ...prev, date: e.target.value }))
                     }
+                    onClick={() => {
+                      if (dateInputRef.current) {
+                        dateInputRef.current.showPicker();
+                      }
+                    }}
                     className="border p-2 rounded"
                     title="Выберите дату бронирования"
                   />
