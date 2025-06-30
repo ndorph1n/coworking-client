@@ -9,7 +9,7 @@ export default function RegisterPage() {
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
-    phone: "",
+    phone: undefined,
     email: "",
     password: "",
     confirm: "",
@@ -20,7 +20,12 @@ export default function RegisterPage() {
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: name === "phone" && value.trim() === "" ? undefined : value,
+    }));
   };
 
   const handleSubmit = async (e) => {
