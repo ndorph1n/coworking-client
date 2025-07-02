@@ -116,7 +116,7 @@ export default function Header() {
             className="hover:underline"
             onClick={() => setMenuOpen(false)}
           >
-            Бронирование
+            Забронировать
           </Link>
           <Link
             to="/about"
